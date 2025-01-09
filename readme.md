@@ -35,7 +35,7 @@ system. The bot processes user queries using AI and logs messages for generating
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/khonikdev/gorag-tg-bot.git
+    git clone https://github.com/khorevnikita/rag-telegram-bot-lite
     ```
 
 2. Create a `.env` file in the project root and fill it with the following environment variables:
