@@ -1,109 +1,108 @@
-app_name: ""
-app_url: ""
-bot_token: ""
-rag_api_endpoint: "https://ai.medichain.ai"
-rag_api_token: ""
+app_name: "example_app_name"
+app_url: "https://example.com"
+bot_token: "example_bot_token"
+rag_api_endpoint: "https://example.ai.endpoint"
+rag_api_token: "example_api_token"
 
 database:
-  host: "db"
+  host: "example_db_host"
   port: "5432"
-  user: ""
-  password: ""
-  name: ""
+  user: "example_user"
+  password: "example_password"
+  name: "example_database_name"
 
-ai_mode_message: "Я готов ответить на ваши вопросы."
-temporary_message: "Пожалуйста, подождите, я обрабатываю ваш запрос..."
+ai_mode_message: "I'm ready to answer your questions."
+temporary_message: "Please wait, I'm processing your request..."
 
 commands:
   - name: start
-    label: "Запустить бота"
+    label: "Start the bot"
     enabled: true
     show_in_menu: true
-    message: "Здравствуйте! Чем могу помочь?"
+    message: "Hello! How can I assist you?"
   - name: menu
-    label: "Меню"
+    label: "Menu"
     enabled: true
     show_in_menu: true
-    message: "Это главное меню. Тут можно задавать различные пользовательские контексты"
+    message: "This is the main menu. You can set different user contexts here."
   - name: about
-    label: "О программе"
+    label: "About"
     enabled: true
     show_in_menu: true
-    message: "О программе: Этот бот создан для помощи пользователям. Разработан командой энтузиастов."
+    message: "About: This bot is designed to assist users. Developed by a team of enthusiasts."
   - name: help
-    label: "Помощь и техподдержка"
+    label: "Help and Support"
     enabled: true
     show_in_menu: true
-    message: "Если у вас возникли вопросы или нужна помощь, пожалуйста, свяжитесь с нашей службой поддержки."
+    message: "If you have any questions or need help, please contact our support team."
   - name: report
-    label: ""
+    label: "Report"
     enabled: true
     show_in_menu: false
-    message: ""
+    message: "Report issues here."
   - name: form
-    label: "Анкета"
+    label: "Form"
     enabled: true
     show_in_menu: true
-    message: ""
+    message: "Please fill out this form for a better experience."
   - name: subscription
-    label: "Подписка"
+    label: "Subscription"
     enabled: true
     show_in_menu: true
-    message: ""
+    message: "Manage your subscription here."
   - name: prompt
-    label: "Задать вопрос"
+    label: "Ask a Question"
     enabled: true
     show_in_menu: true
-    message: "Выберите наиболее подходящую команду боту"
+    message: "Choose the most relevant command for the bot."
     replies:
-      - Подготовь мне рацион питания на неделю
-      - Какие продукты не содержат глицерин?
-      - Какой у меня индекс массы тела?
-      - Какая калорийность у подсолнечного масла?
+      - Prepare a weekly meal plan for me.
+      - What foods do not contain glycerin?
+      - What is my body mass index?
+      - What is the caloric content of sunflower oil?
   - name: themas
-    label: "План питания"
+    label: "Meal Plan"
     enabled: true
     show_in_menu: true
-    message: "Выберите необходимое действие"
+    message: "Choose the required action."
     actions:
-      - label: "Научные основы потери веса и почему так трудно его удержать"
-        prompt: "Объясни научные основы потери веса и причины, по которым сложно удержать сниженный вес."
+      - label: "Scientific Basics of Weight Loss and Why It's Hard to Maintain"
+        prompt: "Explain the scientific basics of weight loss and why it's hard to maintain reduced weight."
         act_data: "1"
         act_unique: "command_prompt" # DEFAULT VALUE
-      - label: "План тренировок"
-        prompt: "Подготовь мне план тренировок исходя из моих реалий и целей"
+      - label: "Workout Plan"
+        prompt: "Prepare a workout plan based on my realities and goals."
         act_data: "2"
         act_unique: "command_prompt" # DEFAULT VALUE
 
 menu:
   enabled: true
-  label: "Главное меню"
+  label: "Main Menu"
   items:
     - key: "document"
       enabled: true
-      button_label: "Документ"
-      message: ""
+      button_label: "Document"
+      message: "Access your documents here."
       context: ""
       actions: [ ]
     - key: "training"
       enabled: true
-      button_label: "ИИ тренер"
-      message: ""
+      button_label: "AI Trainer"
+      message: "Start your AI training here."
       context: ""
       actions:
-        - label: "Начать"
-          prompt: ""
+        - label: "Start"
+          prompt: "Initiate AI training session."
           act_data: "training"
           act_unique: "command_prompt"
-
 
 modules:
   likes:
     enabled: true
-    like_label: "👍 Нравится"
-    like_response: "Спасибо за вашу оценку!"
-    dislike_label: "👎 Не нравится"
-    dislike_response: "Спасибо за ваш отзыв, мы постараемся улучшить работу."
+    like_label: "👍 Like"
+    like_response: "Thank you for your feedback!"
+    dislike_label: "👎 Dislike"
+    dislike_response: "Thank you for your feedback. We'll strive to improve."
   files:
     enabled: true
   audio:
@@ -112,111 +111,110 @@ modules:
     enabled: true
     show_on_start: true
     can_skip: false
-    disclaimer_label: "Чтобы улучшить работу бота, пожалуйста, заполните небольшую анкету."
-    start_label: "Заполнить анкету"
-    later_label: "Вернуться к анкете позже"
-    later_message: "Чтобы вернуться к анкете позже, выберите соответствующий пункт в меню или введите команду /form."
+    disclaimer_label: "Please fill out a short form to enhance the bot's performance."
+    start_label: "Fill Out the Form"
+    later_label: "Return to the Form Later"
+    later_message: "To return to the form later, select the appropriate menu item or enter the command /form."
     allow_edit: true
-    edit_label: "Отредактировать анкету"
-    select_question_message: "Выберите вопрос"
-    view_label: "Посмотреть анкету"
-    completed_message: "Спасибо за заполнение анкеты!"
-    wrong_option_message: "Пожалуйста, выберите один из доступных вариантов"
-    custom_option_message: "Введите свой вариант"
-    next_question_label: "Перейти к следующему вопросу"
-    more_option_label: "Выбрать еще вариант"
-    option_saved_message: "Ваш ответ сохранён"
-    add_option_message: "Выберите еще вариант?"
-    context_prefix: "Информация о пользователе-враче:"
+    edit_label: "Edit Form"
+    select_question_message: "Select a question."
+    view_label: "View Form"
+    completed_message: "Thank you for completing the form!"
+    wrong_option_message: "Please select one of the available options."
+    custom_option_message: "Enter your custom option."
+    next_question_label: "Go to the Next Question"
+    more_option_label: "Select Another Option"
+    option_saved_message: "Your response has been saved."
+    add_option_message: "Would you like to add another option?"
+    context_prefix: "User Information:"
     questions:
-      - text: "Выберите ваш пол"
+      - text: "Select your gender."
         order: 0
         is_required: true
         type: select
         selectable_options_count: 1
         options:
-          - text: "Мужской"
-          - text: "Женский"
-      - text: "Укажите возраст"
+          - text: "Male"
+          - text: "Female"
+      - text: "Indicate your age."
         order: 1
         is_required: true
         type: select
         selectable_options_count: 1
         options:
-          - text: "до 18"
+          - text: "Under 18"
           - text: "18-25"
           - text: "26-35"
           - text: "36-45"
           - text: "46-55"
           - text: "56-65"
-          - text: "старше 65"
-      - text: "Высота (см)"
+          - text: "Above 65"
+      - text: "Height (cm)"
         order: 2
         is_required: true
         type: number
-        hint: "Введите высоту в см, например, 170"
-      - text: "Вес"
+        hint: "Enter your height in cm, e.g., 170."
+      - text: "Weight (kg)"
         order: 3
         is_required: true
         type: number
-        hint: "Введите вес в кг, например, 70"
-      - text: "У вас есть аллергия?"
+        hint: "Enter your weight in kg, e.g., 70."
+      - text: "Do you have any allergies?"
         order: 4
         is_required: true
         type: select
         selectable_options_count: 1
-        hint: "Если есть, укажите"
+        hint: "If yes, please specify."
         options:
-          - text: "Да"
+          - text: "Yes"
             require_additional_text: true
-          - text: "Нет"
-      - text: "Какие ваши цели?"
+          - text: "No"
+      - text: "What are your goals?"
         order: 5
         is_required: true
         type: select
         selectable_options_count: 9
         options:
-          - text: "Improve overall health"
-          - text: "Lose weight"
-          - text: "Gain weight"
-          - text: "Increase energy levels"
-          - text: "Enhance athletic performance"
-          - text: "Improve digestion"
-          - text: "Strengthen the immune system"
-          - text: "Manage a health condition"
-          - text: "Other"
+          - text: "Improve overall health."
+          - text: "Lose weight."
+          - text: "Gain weight."
+          - text: "Increase energy levels."
+          - text: "Enhance athletic performance."
+          - text: "Improve digestion."
+          - text: "Strengthen the immune system."
+          - text: "Manage a health condition."
+          - text: "Other."
             require_additional_text: true
-      - text: "Расскажите немного о себе"
+      - text: "Tell us a little about yourself."
         order: 6
         is_required: true
         type: text
 
-
   billing:
     enabled: true
-    subscription_alert: "Подписка на сервис отсутствует или истекла"
-    subscription_message: "Подписка действительна до: {expires_at}"
-    subscribe_btn: "Перейдите к оплате"
-    unsubscribe_btn: "Отменить подписку"
-    unsubscribe_confirmation_message: "Вы точно уверены, что хотите отменить подписку?\n
-    Без подписки вы потеряете доступ к функционалу DIMA, который экономит ваше время и помогает в работе\\.\n
-    👇 Подтвердите действие или вернитесь назад\\."
-    unsubscribe_cancel: "Экономить время"
-    unsubscribe_confirm: "Отменить подписку"
-    bye_message: "Подписка отменена. Вы сможете пользоваться ботом до конца оплаченного периода. Следующего списания не произойдет."
-    not_enough_amount_notification: "Некорректная сумма оплаты, попробуйте еще раз"
-    subscription_granted_notification: "Подписка успешно продлена. Спасибо, что Вы с нами!"
+    subscription_alert: "No active subscription or subscription has expired."
+    subscription_message: "Your subscription is valid until: {expires_at}."
+    subscribe_btn: "Proceed to Payment."
+    unsubscribe_btn: "Cancel Subscription."
+    unsubscribe_confirmation_message: "Are you sure you want to cancel your subscription?\n
+    Without a subscription, you will lose access to DIMA's functionality that saves your time and helps in your work.\n
+    👇 Confirm the action or go back."
+    unsubscribe_cancel: "Keep Saving Time."
+    unsubscribe_confirm: "Cancel Subscription."
+    bye_message: "Subscription canceled. You can use the bot until the end of the paid period. No further charges will be made."
+    not_enough_amount_notification: "Incorrect payment amount, please try again."
+    subscription_granted_notification: "Subscription successfully extended. Thank you for staying with us!"
     providers:
       cloud_payments:
         enabled: false
-        public_key: ""
-        secret_key: ""
+        public_key: "example_public_key"
+        secret_key: "example_secret_key"
         period: 1
-        period_unit: "Month" # [ Day, Week, Month ]
+        period_unit: "Month" # [Day, Week, Month]
         price: 1000
       yoo_kassa:
         enabled: true
-        token: ""
+        token: "example_token"
         period: 1
         period_unit: "Month"
         price: 99000
