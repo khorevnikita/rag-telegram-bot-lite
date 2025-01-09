@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  base:
+    build:
+      context: bot
+      dockerfile: Dockerfile
+      target: bot_base
+
+  bot:
+    build:
+      context: bot
+      dockerfile: Dockerfile
+      target: bot
+    restart: always
+    networks:
+      - gorag-net
+    depends_on:
+      - base
+      - db
+  api:
+    build:
+      context: bot
+      dockerfile: Dockerfile
+      target: api
+    restart: always
+    networks:
+      - gorag-net
+    ports:
+      - "${EXPOSE_API_PORT:-8080}:8080"
+    depends_on:
+      - base
+      - db
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    restart: always
+    ports:
+      - "${EXPOSE_DB_PORT}:${DB_PORT}"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - gorag-net
+  redis:
+    image: redis:latest
+    networks:
+      - gorag-net
+networks:
+  gorag-net: # Создаем именованную сеть
+    name: ${NETWORK_NAME}

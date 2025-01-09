@@ -1,0 +1,21 @@
+run:
+  timeout: 5m
+
+
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - ineffassign
+    - gocyclo
+
+linters-settings:
+  gocyclo:
+    min-complexity: 15  # Установите порог цикломатической сложности
+
+issues:
+  exclude-rules:
+    - path: ".*pkg/mod.*"  # Игнорировать ошибки из директории pkg/mod
+      linters:
+        - "*"

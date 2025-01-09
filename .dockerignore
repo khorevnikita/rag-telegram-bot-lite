@@ -1,0 +1,11 @@
+.idea
+.git
+
+# Ignore Go test files
+*_test.go
+
+# Ignore Docker-related files
+Dockerfile
+docker-compose.yml
+
+data

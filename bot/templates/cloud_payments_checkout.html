@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+</head>
+<body>
+<script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+<script>
+    const pay = () => {
+        const widget = new cp.CloudPayments();
+
+        // Данные, переданные из Go
+        const publicId = "{{ .PublicID }}";
+        const description = "{{ .Description }}";
+        const amount = Number("{{ .Amount }}");
+        const currency = "{{ .Currency }}";
+        const invoiceId = "{{ .InvoiceID }}";
+        const accountId = "{{ .AccountID }}";
+        const period = Number("{{ .Period }}");
+        const periodUnit = "{{ .PeriodUnit }}";
+        const items = JSON.parse("{{ .Items | toJSON }}");
+
+        const receipt = {
+            Items: items,
+            taxationSystem: 0,
+            email: accountId,
+            amounts: {
+                electronic: amount,
+                advancePayment: 0.00,
+                credit: 0.00,
+                provision: 0.00,
+            },
+        };
+
+        const data = {
+            CloudPayments: {
+                CustomerReceipt: receipt,
+                recurrent: {
+                    interval: periodUnit,
+                    period: period,
+                    customerReceipt: receipt,
+                },
+            },
+        };
+
+        widget.charge({
+                publicId: publicId,
+                description: description,
+                amount: amount,
+                currency: currency,
+                invoiceId: invoiceId,
+                accountId: accountId,
+                data: data,
+            },
+            function (options) { // success
+                alert("Оплата прошла успешно, можно закрыть окно.")
+            },
+            function (reason, options) { // fail
+                alert('Payment failed: ' + reason);
+            });
+    }
+
+    //document.getElementById('payButton').addEventListener('click', pay);
+    document.addEventListener("DOMContentLoaded", pay)
+</script>
+</body>
+</html>
